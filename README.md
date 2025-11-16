@@ -68,4 +68,4 @@ If you find our code or data helpful, please cite our paper:
 ## Acknowledgment
 Our implementation is mainly based on following repositories. Thanks for their authors.
 
-* [Unimatch]([https://github.com/open-mmlab/mmsegmentation](https://github.com/LiheYoung/UniMatch))
+* - [Unimatch]([https://github.com/LiheYoung/ST-PlusPlus](https://github.com/LiheYoung/UniMatch))
