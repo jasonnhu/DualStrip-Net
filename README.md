@@ -1,4 +1,4 @@
-#[TGRS 2025] DualStrip-Net: A Strip-based Unified Framework for Weakly- and Semi-Supervised Road Segmentation from Satellite Images
+# [TGRS 2025] DualStrip-Net: A Strip-based Unified Framework for Weakly- and Semi-Supervised Road Segmentation from Satellite Images
 ![DualStrip-Net Framework](docs/ssl_overview.png)
 
 ## Getting Started
