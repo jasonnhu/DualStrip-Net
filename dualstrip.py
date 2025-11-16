@@ -138,7 +138,7 @@ def main():
         loader = zip(trainloader_l, trainloader_u)
 
         for i, ((img_x, mask_x),
-                (img_u_w, img_u_s1, img_u_s2, ignore_mask, cutmix_box1, cutmix_box2)) in enumerate(loader):
+                (img_u_w, img_u_s1, img_u_s2, ignore_mask)) in enumerate(loader):
 
 
             img_x, mask_x = img_x.cuda(), mask_x.cuda()
