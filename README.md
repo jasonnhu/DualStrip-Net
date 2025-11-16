@@ -48,7 +48,7 @@ Please modify your dataset path in configuration files.
 ```
 ## Usage
 ```bash
-CUDA_VISIBLE_DEVICES=0, 1 bash train.sh <num_gpu> <port>
+CUDA_VISIBLE_DEVICES=0,1 bash train.sh <num_gpu> <port>
 ```
 
 ## Citation
