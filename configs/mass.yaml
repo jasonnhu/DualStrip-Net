@@ -1,0 +1,30 @@
+# arguments for dataset
+dataset: mass
+nclass: 2
+classes: 2
+crop_size: 512
+data_root: /path/datasets/mass/
+
+# arguments for label
+use_patch: False
+use_labeled: False
+grid: 16
+aug: True
+
+# arguments for training
+epochs: 80
+batch_size: 4 # per GPU x 4 GPUs
+lr: 0.02
+lr_multi: 1
+criterion:
+  name: CELoss #CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.95
+
+# arguments for model
+model: unetformer #deeplabv3plus
+backbone: swsl_resnet18
+patch: 4
+replace_stride_with_dilation: [False, False, True]
+dilations: [6, 12, 18]

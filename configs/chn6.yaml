@@ -1,0 +1,29 @@
+# arguments for dataset
+dataset: chn6
+nclass: 2
+crop_size: 512
+data_root: /path/datasets/CHN6
+
+# arguments for label
+use_patch: False
+use_labeled: False
+grid: 16
+aug: True
+
+# arguments for training
+epochs: 50
+batch_size: 8 # per GPU x 4 GPUs
+lr: 0.01
+lr_multi: 1
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.95
+
+# arguments for model
+model: unet #deeplabv3plus
+backbone: resnet34
+patch: 4
+replace_stride_with_dilation: [False, False, True]
+dilations: [6, 12, 18]
