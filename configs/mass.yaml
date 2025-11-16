@@ -23,8 +23,8 @@ criterion:
 conf_thresh: 0.95
 
 # arguments for model
-model: unetformer #deeplabv3plus
-backbone: swsl_resnet18
+model: unet #deeplabv3plus
+backbone: resnet34
 patch: 4
 replace_stride_with_dilation: [False, False, True]
 dilations: [6, 12, 18]
