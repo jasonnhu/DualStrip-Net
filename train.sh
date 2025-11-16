@@ -1,10 +1,10 @@
 #!/bin/bash
 now=$(date +"%Y%m%d_%H%M%S")
 # modify these augments if you want to try other datasets, splits or methods
-# dataset: ['levir', 'whu']
-# method: ['unimatch', 'supervised']
+# dataset: ['chn6', 'mass', 'deepglobe']
+# method: ['dualstrip']
 # exp: just for specifying the 'save_path'
-# split: ['5%', '10%', '20%', '40%']
+# split: ['5%', '10%', '20%']
 dataset='mass'
 method='dualstrip'
 exp='dualstrip-net' #deeplabv3plus_r50
