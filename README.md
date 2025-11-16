@@ -28,14 +28,14 @@ Please modify your dataset path in configuration files.
     └── val
         ├── images
         ├── gt
-├── [Your Massachusetts Path]
+├── [Your DeepGlobe Path]
     ├── train_crops
         ├── images
         ├── gt
     └── val_crops
         ├── images
         ├── gt
-├── [Your Mass Path]
+├── [Your Massachusetts Path]
     ├── train
         ├── images
         ├── gt
