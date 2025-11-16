@@ -18,7 +18,7 @@ from model.semseg.patchnet import PatchNet
 from supervised import evaluate
 from util.classes import CLASSES
 from util.ohem import ProbOhemCrossEntropy2d
-from util.utils import count_params, init_log, AverageMeter,criterion, dice_bce_loss
+from util.utils import count_params, init_log, AverageMeter
 from util.dist_helper import setup_distributed
 import torch.nn.functional as F
 import random
@@ -32,12 +32,6 @@ parser.add_argument('--local_rank', default=0, type=int)
 parser.add_argument('--port', default=None, type=int)
 
 IMG_SIZE = 512
-def patch_mask(x, size=8):
-    kernel = stride = IMG_SIZE // size
-    return F.max_pool2d(x, kernel, stride)
-
-def patch_pred(x, size=8):
-    return F.adaptive_max_pool2d(x, (size, size))
 
 def main():
     args = parser.parse_args()
@@ -74,8 +68,6 @@ def main():
 
     if cfg['criterion']['name'] == 'CELoss':
         criterion_l = nn.CrossEntropyLoss(**cfg['criterion']['kwargs']).cuda(local_rank)
-    elif cfg['criterion']['name'] == 'DICE_BCE':
-        criterion_l = dice_bce_loss().cuda()
     elif cfg['criterion']['name'] == 'OHEM':
         criterion_l = ProbOhemCrossEntropy2d(**cfg['criterion']['kwargs']).cuda(local_rank)
     else:
@@ -84,7 +76,6 @@ def main():
     criterion_u = nn.CrossEntropyLoss(reduction='none').cuda(local_rank)
     criterion_p = nn.BCELoss().cuda(local_rank)
     criterion_sfc = nn.MSELoss().cuda(local_rank)
-    criterion_dice_s = dice_bce_loss().cuda(local_rank)
     criterion_scc = nn.L1Loss().cuda(local_rank)
     trainset_u = SemiDataset(cfg, cfg['dataset'], cfg['data_root'], 'train_u',
                              cfg['crop_size'], args.unlabeled_id_path)
