@@ -6,7 +6,6 @@
 ### Installation
 
 ```bash
-cd DualStrip-Net
 conda create -n dualstrip python=3.10
 conda activate dualstrip
 pip install -r requirements.txt
