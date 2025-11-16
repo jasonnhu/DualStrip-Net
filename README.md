@@ -14,7 +14,7 @@ pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.py
 ```
 
 ### Dataset
-- CHN6: (https://github.com/CUG-URS/CHN6-CUG-Roads-Dataset)
+- [CHN6](https://github.com/CUG-URS/CHN6-CUG-Roads-Dataset)
 - Mass
 - DeepGlobe
 
