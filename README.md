@@ -47,8 +47,9 @@ Please modify your dataset path in configuration files.
         ├── gt
 ```
 ## Usage
-
+```bash
 CUDA_VISIBLE_DEVICES=0, 1 bash train.sh <num_gpu> <port>
+```
 
 ## Citation
 If you find our code or data helpful, please cite our paper:
