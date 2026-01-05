@@ -23,7 +23,7 @@ from util.dist_helper import setup_distributed
 import torch.nn.functional as F
 import random
 
-parser = argparse.ArgumentParser(description='Revisiting Weak-to-Strong Consistency in Semi-Supervised Semantic Segmentation')
+parser = argparse.ArgumentParser(description='Revisiting DualStrip in Semi-Supervised Semantic Segmentation')
 parser.add_argument('--config', type=str, required=True)
 parser.add_argument('--labeled-id-path', type=str, required=True)
 parser.add_argument('--unlabeled-id-path', type=str, required=True)
