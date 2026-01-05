@@ -18,7 +18,6 @@ import yaml
 from segmentation_models_pytorch import Unet
 from model.semseg.patchnet import PatchNet
 
-# from dataset.semi_whu import SemiDataset
 # from dataset.semi_chn6 import SemiDataset
 # from dataset.semi_mass import SemiDataset
 from dataset.semi_dg import SemiDataset
