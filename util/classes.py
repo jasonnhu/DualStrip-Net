@@ -32,6 +32,5 @@ CLASSES = {'pascal': ['background', 'aeroplane', 'bicycle', 'bird', 'boat', 'bot
             'deepglobe':['background', 'road'],
             'dg':['background', 'road'],
             'mass':['background', 'road'],
-            'whuroad':['background', 'road'],
             'chn6':['background', 'road'],
            }
