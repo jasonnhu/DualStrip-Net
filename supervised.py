@@ -133,16 +133,12 @@ def main():
     cudnn.enabled = True
     cudnn.benchmark = True
 
-    # model = DeepLabV3Plus(cfg)
-    model = Unet(encoder_name=cfg['backbone'], classes=2) #, decoder_attention_type='scse')
-    # model = DinkNet34()
-    # model = UNetFormer()
+
+    model = Unet(encoder_name=cfg['backbone'], classes=2) 
+
     if rank == 0:
         logger.info('Total params: {:.1f}M\n'.format(count_params(model)))
 
-    # optimizer = SGD([{'params': model.encoder.parameters(), 'lr': cfg['lr']},
-    #                  {'params': [param for name, param in model.named_parameters() if 'encoder' not in name],
-    #                   'lr': cfg['lr'] * cfg['lr_multi']}], lr=cfg['lr'], momentum=0.9, weight_decay=1e-4)
     optimizer = SGD(model.parameters(), lr=cfg['lr'], momentum=0.9, weight_decay=1e-4)
 
     local_rank = int(os.environ["LOCAL_RANK"])
@@ -202,13 +198,6 @@ def main():
             else:
                 pred = model(img)
                 loss = criterion(pred, mask)
-            # pdb.set_trace()
-            # outs, feas_h, feas_v, outs_h, outs_v = model(img)
-            # loss_x = criterion(outs, mask)
-            # loss_h = criterion(outs_h, mask)
-            # loss_v = criterion(outs_v, mask)
-            # loss_s = criterion_s(feas_h, feas_v)
-            # loss = loss_x + loss_h + loss_v + loss_s
 
 
             torch.distributed.barrier()
@@ -222,7 +211,7 @@ def main():
             iters = epoch * len(trainloader) + i
             lr = cfg['lr'] * (1 - iters / total_iters) ** 0.9
             optimizer.param_groups[0]["lr"] = lr
-            # optimizer.param_groups[1]["lr"] = lr * cfg['lr_multi']
+
 
             if rank == 0:
                 writer.add_scalar('train/loss_all', loss.item(), iters)
