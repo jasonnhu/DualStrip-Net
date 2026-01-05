@@ -70,25 +70,14 @@ def evaluate(model, loader, mode, cfg, path=None):
                     img = img[:, :, start_h:start_h + cfg['crop_size'], start_w:start_w + cfg['crop_size']]
                     mask = mask[:, start_h:start_h + cfg['crop_size'], start_w:start_w + cfg['crop_size']]
 
-                # pred = model(img).argmax(dim=1)
-                # pdb.set_trace()
-                if cfg['use_patch']:
-                    pred = model(img)
-                    # pred[pred >= 0.5] = 1
-                    # pred[pred < 0.5] = 0
-                    pred = pred.squeeze(0)
-                    blur = cv2.GaussianBlur(np.uint8(pred * 255), (5, 5), 0)
-                    ret3, th3 = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-                    pred = torch.from_numpy(th3 / 255).long().cuda()
-                else:
-                    pred = model(img).argmax(dim=1)
+                pred = model(img).argmax(dim=1)
                 if cfg['dataset'] == 'mass':
                     pred = pred[:,2:-2, 2:-2]
                 if path is not None:
                     if not os.path.exists(path+'/output'):
                         os.makedirs(path+'/output')
                     filename = os.path.join(path+'/output', '{}.png'.format(id[0]))
-                    # pdb.set_trace()
+ 
                     pre = (pred.squeeze().cpu().numpy() * 255.).astype(np.uint8)
                     imageio.imsave(filename, pre)
             intersection, union, target = \
