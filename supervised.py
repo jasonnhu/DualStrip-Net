@@ -17,14 +17,11 @@ from torch.utils.tensorboard import SummaryWriter
 import yaml
 from segmentation_models_pytorch import Unet
 from model.semseg.patchnet import PatchNet
-from model.semseg.dlinknet import DinkNet34
-from model.semseg.unetformer import UNetFormer
 
 # from dataset.semi_whu import SemiDataset
 # from dataset.semi_chn6 import SemiDataset
 # from dataset.semi_mass import SemiDataset
 from dataset.semi_dg import SemiDataset
-from model.semseg.deeplabv3plus import DeepLabV3Plus
 from util.classes import CLASSES
 from util.ohem import ProbOhemCrossEntropy2d
 from util.utils import count_params, AverageMeter, intersectionAndUnion, init_log
